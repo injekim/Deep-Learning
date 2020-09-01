@@ -37,6 +37,10 @@ import cv2
 from mrcnn.visualize import display_instances
 import matplotlib.pyplot as plt
 
+# Mount google drive
+from google.colab import drive
+drive.mount('/gdrive')
+
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
 
