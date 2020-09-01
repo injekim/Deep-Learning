@@ -41,6 +41,9 @@ import matplotlib.pyplot as plt
 from google.colab import drive
 drive.mount('/gdrive')
 
+# google drive directory
+GDRIVE_DIR = "/gdrive/My Drive/COLAB/mask_rcnn_damage_detection"
+
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
 
@@ -294,7 +297,7 @@ if __name__ == '__main__':
                         metavar="/path/to/weights.h5",
                         help="Path to weights .h5 file or 'coco'")
     parser.add_argument('--logs', required=False,
-                        default=DEFAULT_LOGS_DIR,
+                        default=GDRIVE_DIR,
                         metavar="/path/to/logs/",
                         help='Logs and checkpoints directory (default=logs/)')
     parser.add_argument('--image', required=False,
