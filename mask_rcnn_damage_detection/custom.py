@@ -37,12 +37,12 @@ import cv2
 from mrcnn.visualize import display_instances
 import matplotlib.pyplot as plt
 
-# Mount google drive
-from google.colab import drive
-drive.mount('/gdrive')
+# # Mount google drive
+# from google.colab import drive
+# drive.mount('/gdrive')
 
-# google drive directory
-GDRIVE_DIR = "/gdrive/My Drive/COLAB/mask_rcnn_damage_detection"
+# # google drive directory
+# GDRIVE_DIR = "/gdrive/My Drive/COLAB/mask_rcnn_damage_detection"
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
@@ -76,13 +76,13 @@ class CustomConfig(Config):
     IMAGES_PER_GPU = 2
 
     # Number of classes (including background)
-    NUM_CLASSES = 1 + 1  # Background + toy
+    NUM_CLASSES = 1 + 5 # Background + toy
 
     # Number of training steps per epoch
     STEPS_PER_EPOCH = 100
 
     # Skip detections with < 90% confidence
-    DETECTION_MIN_CONFIDENCE = 0.9
+    DETECTION_MIN_CONFIDENCE = 0.8
 
 
 ############################################################
@@ -97,7 +97,12 @@ class CustomDataset(utils.Dataset):
         subset: Subset to load: train or val
         """
         # Add classes. We have only one class to add.
-        self.add_class("damage", 1, "damage")
+        # self.add_class("damage", 1, "damage")
+        self.add_class("damage", 1, "Scratch")
+        self.add_class("damage", 2, "Dent")
+        self.add_class("damage", 3, "Rust")
+        self.add_class("damage", 4, "Break")
+        self.add_class("damage", 5, "Stamped")
 
         # Train or validation dataset?
         assert subset in ["train", "val"]
